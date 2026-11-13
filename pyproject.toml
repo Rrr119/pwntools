@@ -36,6 +36,7 @@ dependencies = [
     "paramiko>=1.15.2",
     "mako>=1.0.0",
     "pyelftools>=0.32",
+    "pefile>=2023.2.7",
     "capstone>=4.0.0",
     "ropgadget>=5.3",
     "pyserial>=2.7",
@@ -61,6 +62,7 @@ download = "https://github.com/Gallopsled/pwntools/releases"
 dev = [
     "mypy-baseline",
     "mypy",
+    "pytest",
     "types-beautifulsoup4",
     "types-docutils",
     "types-gdb",
@@ -117,6 +119,7 @@ module = [
     "colored_traceback.*",
     "intervaltree.*",
     "mako.*",
+    "pefile.*",
     "ropgadget.*",
     "rpyc.*",
     "sortedcontainers.*",

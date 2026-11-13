@@ -63,6 +63,7 @@ Each of the ``pwntools`` modules is documented here.
    libcdb
    log
    memleak
+   pe/pe
    protocols
    qemu
    regsort

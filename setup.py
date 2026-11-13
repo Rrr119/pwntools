@@ -74,6 +74,7 @@ setup(
             'data/binutils/*',
             'data/includes/*.h',
             'data/includes/*/*.h',
+            'data/pe/*',
             'data/templates/*.mako',
         ] + templates,
     },

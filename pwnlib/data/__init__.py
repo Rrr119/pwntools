@@ -5,5 +5,10 @@ try:
 except ImportError:
     pass
 
+try:
+    from pwnlib.data import pe
+except ImportError:
+    pass
+
 import os
 path = os.path.dirname(__file__)

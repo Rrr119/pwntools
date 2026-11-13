@@ -51,6 +51,7 @@ from pwnlib.flag import *
 from pwnlib.fmtstr import FmtStr as FmtStr, fmtstr_payload as fmtstr_payload, fmtstr_split as fmtstr_split
 from pwnlib.log import getLogger
 from pwnlib.memleak import MemLeak as MemLeak, RelativeMemLeak as RelativeMemLeak
+from pwnlib.pe import PE as PE
 from pwnlib.regsort import *
 from pwnlib.replacements import *
 from pwnlib.rop import ROP as ROP

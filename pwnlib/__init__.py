@@ -23,6 +23,7 @@ __all__ = [
     'libcdb',
     'log',
     'memleak',
+    'pe',
     'regsort',
     'replacements',
     'rop',

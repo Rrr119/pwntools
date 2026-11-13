@@ -26,11 +26,15 @@ class ABI:
     #: Indicates that this ABI returns to the next address on the slot
     returns: bool = True
 
-    def __init__(self, stack, arg_regs, align, minimum):
+    #: Indicates that the callee removes stack arguments from the stack.
+    callee_cleans_stack: bool = False
+
+    def __init__(self, stack, arg_regs, align, minimum, callee_cleans_stack=False):
         self.stack              = stack
         self.register_arguments = arg_regs
         self.arg_alignment      = align
         self.stack_minimum      = minimum
+        self.callee_cleans_stack = callee_cleans_stack
 
     @staticmethod
     @LocalContext
@@ -214,7 +218,8 @@ freebsd_amd64_sigreturn = sysv_amd64_sigreturn
 freebsd_arm_sigreturn = sysv_arm_sigreturn
 freebsd_aarch64_sigreturn = sysv_aarch64_sigreturn
 
-windows_i386  = ABI('esp', [], 4, 0)
+windows_i386  = ABI('esp', [], 4, 0, callee_cleans_stack=True)
+windows_i386_cdecl = ABI('esp', [], 4, 0)
 windows_amd64 = ABI('rsp', ['rcx','rdx','r8','r9'], 32, 32)
 
 darwin_aarch64 = sysv_aarch64

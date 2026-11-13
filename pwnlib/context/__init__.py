@@ -892,10 +892,21 @@ class ContextType:
 
         """
         # Cyclic imports... sorry Idolf.
-        from pwnlib.elf     import ELF
+        from pwnlib.elf import ELF
+        from pwnlib.pe import PE
 
-        if not isinstance(binary, ELF):
-            binary = ELF(binary)
+        if not isinstance(binary, (ELF, PE)):
+            if isinstance(binary, (bytes, bytearray)):
+                raw = bytes(binary)
+                magic = raw[:2]
+                if magic not in (b'MZ', b'\x7fE') and os.path.exists(raw):
+                    with open(raw, 'rb') as fd:
+                        magic = fd.read(2)
+                    binary = raw
+            else:
+                with open(os.fspath(binary), 'rb') as fd:
+                    magic = fd.read(2)
+            binary = PE(binary) if magic == b'MZ' else ELF(binary)
 
         self.arch   = binary.arch
         self.bits   = binary.bits
